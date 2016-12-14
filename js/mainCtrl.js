@@ -7,7 +7,7 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
   $scope.getMessages = function () {
       $scope.messages = messageService.getMessages().then(function (response) {
       console.log(response);
-      $scope.messages = response;
+      $scope.messages = response.reverse();
     })
   }
 
@@ -21,7 +21,7 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
   $scope.postMessage = function (message) {
     messageService.postMessage(message).then(function (response) {
       console.log(response);
-      $scope.success = true;
+      $scope.getMessages();
     })
   }
 

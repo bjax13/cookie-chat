@@ -15,13 +15,13 @@ angular.module('chatroom').service('messageService', function($http){
     })
   })
 
-  this.postMessage = (function (messageObj) {
+  this.postMessage = (function (message) {
     return $http({
       method: "POST",
       url: 'https://practiceapi.devmounta.in/api/chats',
-      data: messageObj
+      data: {message:message}
     })
-
+    
   })
 
 
