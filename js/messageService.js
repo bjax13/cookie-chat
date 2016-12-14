@@ -2,20 +2,31 @@ angular.module('chatroom').service('messageService', function($http){
   //Here you'll need to create two methods.
   //One called postMessage and
   //the other called getMessages.
-  this.getMessages = function () {
-    return $http({
-      method: 'GET',
-      url: "https://practiceapi.devmounta.in/api/chats"
-    }).then(function (response) {
-      if(response.status === 200){
-        return response.data
-      }
 
-      return "error";
+  this.getMessages = function () {
+    return $http.get("https://practiceapi.devmounta.in/api/chats").then(function (response) {
+      if (response.status === 200) {
+        return response.data;
+      }
+      return "error"
     })
   }
 
-  // used shorthand 
+
+  // this.getMessages = function () {
+  //   return $http({
+  //     method: 'GET',
+  //     url: "https://practiceapi.devmounta.in/api/chats"
+  //   }).then(function (response) {
+  //     if(response.status === 200){
+  //       return response.data
+  //     }
+  //
+  //     return "error";
+  //   })
+  // }
+
+  // used shorthand
   this.postMessage = function (message) {
     return $http.post('https://practiceapi.devmounta.in/api/chats',{message:message})
   }
