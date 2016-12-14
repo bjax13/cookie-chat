@@ -2,7 +2,7 @@ angular.module('chatroom').service('messageService', function($http){
   //Here you'll need to create two methods.
   //One called postMessage and
   //the other called getMessages.
-  this.getMessages = (function () {
+  this.getMessages = function () {
     return $http({
       method: 'GET',
       url: "https://practiceapi.devmounta.in/api/chats"
@@ -13,16 +13,24 @@ angular.module('chatroom').service('messageService', function($http){
 
       return "error";
     })
-  })
+  }
 
-  this.postMessage = (function (message) {
-    return $http({
-      method: "POST",
-      url: 'https://practiceapi.devmounta.in/api/chats',
-      data: {message:message}
-    })
-    
-  })
+  // used shorthand 
+  this.postMessage = function (message) {
+    return $http.post('https://practiceapi.devmounta.in/api/chats',{message:message})
+  }
+
+  // this.postMessage = function (message) {
+  //   return $http({
+  //     method: "POST",
+  //     url: 'https://practiceapi.devmounta.in/api/chats',
+  //     data: {message:message}
+  //   })
+  // }
+
+  this.postCookie = function () {
+    return $http.post("http://practiceapi.devmounta.in/api/cookies",{cookies:"apple"})
+  }
 
 
   //On the lines below create a getMessages method.
