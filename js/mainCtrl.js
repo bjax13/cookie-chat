@@ -5,9 +5,9 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
   //messages ($scope.messages)
 
   $scope.getMessages = function () {
-      $scope.messages = messageService.getMessages().then(function (response) {
+      messageService.getMessages().then(function (response) {
       $scope.messages = response.reverse();
-      console.log(response);
+      // console.log(response);
     })
   }
 
@@ -21,20 +21,22 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
   $scope.postMessage = function (message) {
     messageService.postMessage(message).then(function (response) {
       $scope.getMessages();
+      $scope.postCookies();
       $scope.message = "";
     })
   }
 
   $scope.getCookies = function () {
-    $scope.cookies = messageService.getCookies().then(function (response) {
+    messageService.getCookies().then(function (response) {
       $scope.cookies = response;
     })
   }
 
   $scope.postCookies = function (message) {
-    messageService.postCookies().then(function (response) {
-      console.log(response);
-      $scope.getCookies();
+    messageService.postCookies(message).then(function (response) {
+           $scope.getCookies();
+           console.log( $scope.cookies)
+
     })
   }
 

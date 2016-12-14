@@ -6,6 +6,8 @@ angular.module('chatroom').service('messageService', function($http){
   this.getMessages = function () {
     return $http.get("https://practiceapi.devmounta.in/api/chats").then(function (response) {
       if (response.status === 200) {
+        console.log("message");
+        console.log(response);
         return response.data;
       }
       return "error"
@@ -28,6 +30,7 @@ angular.module('chatroom').service('messageService', function($http){
 
   // used shorthand
   this.postMessage = function (message) {
+
     return $http.post('https://practiceapi.devmounta.in/api/chats',{message:message})
   }
 
@@ -40,13 +43,14 @@ angular.module('chatroom').service('messageService', function($http){
   // }
 
   this.postCookies = function () {
-    return $http.post("http://practiceapi.devmounta.in/api/cookies",{cookies:"apple"})
+    return $http.post("https://practiceapi.devmounta.in/api/cookies",{'Delectable Chocolate Chip Cookie':
+"apple"})
   }
 
   this.getCookies = function () {
-    return $http.get("http://practiceapi.devmounta.in/api/cookies").then(function (response) {
+    return $http.get("https://practiceapi.devmounta.in/api/cookies").then(function (response) {
       if (response.status === 200) {
-        console.log(response.data.cookies);
+        // console.log(response.data.cookies);
         return response.data.cookies;
       }
     })
