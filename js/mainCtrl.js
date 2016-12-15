@@ -6,8 +6,9 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
 
   $scope.getMessages = function () {
       messageService.getMessages().then(function (response) {
+
       $scope.messages = response.reverse();
-      // console.log(response);
+      console.log($scope.messages);
     })
   }
 
