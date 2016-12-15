@@ -8,6 +8,7 @@ angular.module('chatroom').service('messageService', function($http){
       if (response.status === 200) {
         console.log("message");
         console.log(response);
+        
         return response.data;
       }
       return "error"
